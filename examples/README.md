@@ -1,5 +1,5 @@
 # Example Data files
 
-## For the PsacePrez Profile
+## For the GA SpacePrez Profile
 
 See the first line in each example file for a description of them.
