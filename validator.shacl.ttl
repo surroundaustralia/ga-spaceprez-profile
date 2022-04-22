@@ -5,18 +5,32 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://w3id.org/profile/ga-spaceprez> a owl:Ontology ;
+<https://linked.data.gov.au/def/ga-supermodel/validator> 
+    a owl:Ontology ;
     dcterms:created "2022-04-21"^^xsd:date ;
     dcterms:creator <https://linked.data.gov.au/org/surround> ;
     dcterms:modified "2022-04-21"^^xsd:date ;
     dcterms:publisher <https://linked.data.gov.au/org/surround> ;
-    owl:versionIRI <https://w3id.org/profile/ga-spaceprez/validator/1.0> ;
+    owl:versionIRI <https://linked.data.gov.au/def/ga-supermodel/validator/1.0> ;
     skos:definition "SHACL validator for the Geoscience Australia SpacePrez Profile"@en ;
-    skos:prefLabel "GA SpacePrez Validator"@en .
+    skos:prefLabel "GA Supermodel Profile Validator"@en .
 
-<https://w3id.org/profile/spaceprez/validator/htmlsampletype> a sh:NodeShape ;
-    sh:property [ sh:message "Requirement HTML Sample Type: All Samples must have a direct property to their sample type. This is used for HTML display and corresponds to legacy properties"@en ;
-            sh:minCount 1 ;
-            sh:path gas:htmlSampleType ] ;
-    sh:targetClass gas:Sample .
+<https://linked.data.gov.au/def/ga-supermodel/MaterialSample>
+    a sh:NodeShape ;
+    sh:targetClass tern:MaterialSample ;
+    sh:property [ 
+        sh:path dcterms:identifier ;
+        sh:message ""@en ;
+        sh:or (
+            [ sh:datatype gas:igsnIri ]
+            [ sh:datatype gas:sampleid ]
+            [ sh:datatype gas:eno ]
+        ) ;
+    ] ;
+    sh:property [
+        sh:path gas:hasFoiName ;
+        sh:message "comes from spec"@en ;
+        sh:datatype xsd:string ;
+    ] ;    
 
+.
