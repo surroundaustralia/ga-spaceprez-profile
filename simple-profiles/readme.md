@@ -1,0 +1,3 @@
+These two text files provide the dumbest implementation of a 'closed' profile based on the validator.
+
+They are to be read as predicates for triples which should be included in the profile - with pred1 being predicates of the feature itself, and pred2 being predicates of any blank nodes from the feature. This pattern can be extended to pred3 etc. however Prez will require updating to generate SPARQL based on an arbitrary number of predicates, and perhaps at this point using the SHACL directly is a better method.

@@ -1,0 +1,15 @@
+http://pid.geoscience.gov.au/def/ga-sampling/hasFoiName
+http://pid.geoscience.gov.au/def/ga-sampling/hasFoiType
+http://pid.geoscience.gov.au/def/ga-sampling/hasSampleType
+http://pid.geoscience.gov.au/def/ga-sampling/hasSamplingMethod
+http://pid.geoscience.gov.au/def/ga-sampling/hasMaterialClass
+http://pid.geoscience.gov.au/def/ga-sampling/hasSampleOriginator
+http://pid.geoscience.gov.au/def/ga-sampling/hasDateAcquired
+http://pid.geoscience.gov.au/def/ga-sampling/hasSamplingLocation
+http://www.opengis.net/ont/geosparql#sfWithin
+http://www.opengis.net/ont/geosparql#hasGeometry
+http://www.w3.org/2000/01/rdf-schema#label
+http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+http://pid.geoscience.gov.au/def/ga-sampling/hasOtherGeologicalData
+http://purl.org/dc/terms/isPartOf
+http://purl.org/dc/terms/identifier
