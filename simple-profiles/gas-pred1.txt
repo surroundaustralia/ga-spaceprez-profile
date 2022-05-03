@@ -60,3 +60,5 @@ http://pid.geoscience.gov.au/def/ga-sampling/hasRegionName
 http://pid.geoscience.gov.au/def/ga-sampling/hasOriginator
 http://pid.geoscience.gov.au/def/ga-sampling/hasObservationDate
 http://pid.geoscience.gov.au/def/ga-sampling/hasRemark
+http://pid.geoscience.gov.au/def/ga-sampling/hasBoreholePurpose
+http://pid.geoscience.gov.au/def/ga-sampling/boreholeDetails
