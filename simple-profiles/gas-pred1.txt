@@ -53,7 +53,6 @@ http://pid.geoscience.gov.au/def/ga-sampling/hasOperator
 http://pid.geoscience.gov.au/def/ga-sampling/hasContractor
 http://pid.geoscience.gov.au/def/ga-sampling/hasProcessor
 http://pid.geoscience.gov.au/def/ga-sampling/hasFieldSiteType
-http://pid.geoscience.gov.au/def/ga-sampling/hasFieldSitePurpose
 http://pid.geoscience.gov.au/def/ga-sampling/hasProject
 http://pid.geoscience.gov.au/def/ga-sampling/hasLocationDescription
 http://pid.geoscience.gov.au/def/ga-sampling/hasElevation
@@ -61,6 +60,6 @@ http://pid.geoscience.gov.au/def/ga-sampling/hasRegionName
 http://pid.geoscience.gov.au/def/ga-sampling/hasOriginator
 http://pid.geoscience.gov.au/def/ga-sampling/hasObservationDate
 http://pid.geoscience.gov.au/def/ga-sampling/hasRemark
-http://pid.geoscience.gov.au/def/ga-sampling/hasBoreholePurpose
+http://pid.geoscience.gov.au/def/ga-sampling/hasPurpose
 http://pid.geoscience.gov.au/def/ga-sampling/hasBoreholeDetails
 http://qudt.org/schema/qudt/length
