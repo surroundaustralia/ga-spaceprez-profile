@@ -13,6 +13,7 @@ http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 http://pid.geoscience.gov.au/def/ga-sampling/hasOtherGeologicalData
 http://purl.org/dc/terms/isPartOf
 http://purl.org/dc/terms/identifier
+http://www.w3.org/2004/02/skos/core#altLabel
 http://pid.geoscience.gov.au/def/ga-sampling/hasOperator
 http://pid.geoscience.gov.au/def/ga-sampling/hasDriller
 http://pid.geoscience.gov.au/def/ga-sampling/hasStartDate
@@ -61,4 +62,4 @@ http://pid.geoscience.gov.au/def/ga-sampling/hasOriginator
 http://pid.geoscience.gov.au/def/ga-sampling/hasObservationDate
 http://pid.geoscience.gov.au/def/ga-sampling/hasRemark
 http://pid.geoscience.gov.au/def/ga-sampling/hasBoreholePurpose
-http://pid.geoscience.gov.au/def/ga-sampling/boreholeDetails
+http://pid.geoscience.gov.au/def/ga-sampling/hasBoreholeDetails
