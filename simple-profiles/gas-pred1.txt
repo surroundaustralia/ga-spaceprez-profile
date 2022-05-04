@@ -18,6 +18,8 @@ http://pid.geoscience.gov.au/def/ga-sampling/hasOperator
 http://pid.geoscience.gov.au/def/ga-sampling/hasDriller
 http://pid.geoscience.gov.au/def/ga-sampling/hasStartDate
 http://pid.geoscience.gov.au/def/ga-sampling/hasEndDate
+http://www.w3.org/ns/prov#startedAtTime
+http://www.w3.org/ns/prov#endedAtTime
 http://pid.geoscience.gov.au/def/ga-sampling/hasRigReleaseDate
 http://pid.geoscience.gov.au/def/ga-sampling/hasInclinationType
 http://pid.geoscience.gov.au/def/ga-sampling/hasBoreholeLength
