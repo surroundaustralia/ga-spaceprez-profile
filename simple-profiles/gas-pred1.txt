@@ -48,6 +48,7 @@ http://pid.geoscience.gov.au/def/ga-sampling/hasTieKilometers
 http://pid.geoscience.gov.au/def/ga-sampling/hasTotalKilometers
 http://pid.geoscience.gov.au/def/ga-sampling/hasLineAzimuth
 http://pid.geoscience.gov.au/def/ga-sampling/hasTieAzimuth
+http://pid.geoscience.gov.au/def/ga-sampling/isOnshoreOffshore
 http://pid.geoscience.gov.au/def/ga-sampling/hasOwner
 http://pid.geoscience.gov.au/def/ga-sampling/hasOperator
 http://pid.geoscience.gov.au/def/ga-sampling/hasContractor
@@ -62,4 +63,5 @@ http://pid.geoscience.gov.au/def/ga-sampling/hasObservationDate
 http://pid.geoscience.gov.au/def/ga-sampling/hasRemark
 http://pid.geoscience.gov.au/def/ga-sampling/hasPurpose
 http://pid.geoscience.gov.au/def/ga-sampling/hasBoreholeDetails
+http://pid.geoscience.gov.au/def/ga-sampling/hasBoreholeStatus
 http://qudt.org/schema/qudt/length
