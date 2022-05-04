@@ -43,9 +43,9 @@ http://pid.geoscience.gov.au/def/ga-sampling/hasMeasurementType
 http://pid.geoscience.gov.au/def/ga-sampling/hasMinLineSpacing
 http://pid.geoscience.gov.au/def/ga-sampling/hasMaxLineSpacing
 http://pid.geoscience.gov.au/def/ga-sampling/hasTieSpacing
-http://pid.geoscience.gov.au/def/ga-sampling/hasLineKilometers
-http://pid.geoscience.gov.au/def/ga-sampling/hasTieKilometers
-http://pid.geoscience.gov.au/def/ga-sampling/hasTotalKilometers
+http://pid.geoscience.gov.au/def/ga-sampling/hasLineLength
+http://pid.geoscience.gov.au/def/ga-sampling/hasTieLength
+http://pid.geoscience.gov.au/def/ga-sampling/hasTotalLength
 http://pid.geoscience.gov.au/def/ga-sampling/hasLineAzimuth
 http://pid.geoscience.gov.au/def/ga-sampling/hasTieAzimuth
 http://pid.geoscience.gov.au/def/ga-sampling/isOnshoreOffshore
