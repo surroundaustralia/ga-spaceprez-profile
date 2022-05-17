@@ -16,6 +16,8 @@ http://purl.org/dc/terms/identifier
 http://www.w3.org/2004/02/skos/core#altLabel
 http://pid.geoscience.gov.au/def/ga-sampling/hasOperator
 http://pid.geoscience.gov.au/def/ga-sampling/hasDriller
+http://pid.geoscience.gov.au/def/ga-sampling/hasDrillStartDate
+http://pid.geoscience.gov.au/def/ga-sampling/hasDrillEndDate
 http://pid.geoscience.gov.au/def/ga-sampling/hasStartDate
 http://pid.geoscience.gov.au/def/ga-sampling/hasEndDate
 http://www.w3.org/ns/prov#startedAtTime
@@ -68,4 +70,9 @@ http://pid.geoscience.gov.au/def/ga-sampling/hasBoreholeDetails
 http://pid.geoscience.gov.au/def/ga-sampling/hasBoreholeStatus
 http://pid.geoscience.gov.au/def/ga-sampling/hasPlatformType
 http://pid.geoscience.gov.au/def/ga-sampling/hasPlatformName
+http://pid.geoscience.gov.au/def/ga-sampling/hasStationName
+http://pid.geoscience.gov.au/def/ga-sampling/hasGravityValue
+http://pid.geoscience.gov.au/def/ga-sampling/hasGravityUOM
+http://pid.geoscience.gov.au/def/ga-sampling/hasGravityDatum
+http://pid.geoscience.gov.au/def/ga-sampling/hasEarthMaterial
 http://qudt.org/schema/qudt/length
