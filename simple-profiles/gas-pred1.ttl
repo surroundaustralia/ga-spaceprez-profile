@@ -11,32 +11,38 @@
 <http://www.w3id.org/profile/ga-spaceprez> altr-ext:hasNodeShape [ a sh:NodeShape ;
             sh:closed true ;
             sh:property [ sh:group prez:OtherProperties ;
-                    sh:order 27 ;
-                    sh:path gas:hasKickoffDepth ],
+                    sh:order 3 ;
+                    sh:path gas:hasSamplingMethod ],
                 [ sh:group prez:OtherProperties ;
-                    sh:order 52 ;
-                    sh:path gas:hasLineAzimuth ],
+                    sh:order 49 ;
+                    sh:path gas:hasLineLength ],
                 [ sh:group prez:OtherProperties ;
                     sh:order 19 ;
                     sh:path gas:hasDrillEndDate ],
                 [ sh:group prez:OtherProperties ;
-                    sh:order 14 ;
-                    sh:path dcterms:identifier ],
+                    sh:order 16 ;
+                    sh:path gas:hasOperator ],
                 [ sh:group prez:OtherProperties ;
-                    sh:order 8 ;
-                    sh:path <http://www.opengis.net/ont/geosparql#sfWithin> ],
+                    sh:order 32 ;
+                    sh:path gas:hasEarthMaterialIntervals ],
                 [ sh:group prez:OtherProperties ;
-                    sh:order 45 ;
-                    sh:path gas:hasMeasurementType ],
+                    sh:order 53 ;
+                    sh:path gas:hasTieAzimuth ],
                 [ sh:group prez:OtherProperties ;
-                    sh:order 68 ;
-                    sh:path gas:hasBoreholeDetails ],
+                    sh:order 17 ;
+                    sh:path gas:hasDriller ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 20 ;
+                    sh:path gas:hasStartDate ],
                 [ sh:group prez:OtherProperties ;
                     sh:order 37 ;
                     sh:path gas:hasOtherIsotopesAndGeochronology ],
                 [ sh:group prez:OtherProperties ;
-                    sh:order 23 ;
-                    sh:path prov:endedAtTime ],
+                    sh:order 26 ;
+                    sh:path gas:hasBoreholeLength ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 52 ;
+                    sh:path gas:hasLineAzimuth ],
                 [ sh:group prez:OtherProperties ;
                     sh:order 44 ;
                     sh:path gas:hasSurveyDetail ],
@@ -44,205 +50,199 @@
                     sh:order 65 ;
                     sh:path gas:hasObservationDate ],
                 [ sh:group prez:OtherProperties ;
-                    sh:order 18 ;
-                    sh:path gas:hasDrillStartDate ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 77 ;
-                    sh:path <http://qudt.org/schema/qudt/length> ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 41 ;
-                    sh:path gas:hasLinkedFiles ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 22 ;
-                    sh:path prov:startedAtTime ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 5 ;
-                    sh:path gas:hasSampleOriginator ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 74 ;
-                    sh:path gas:hasGravityUOM ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 43 ;
-                    sh:path gas:hasSurveyType ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 25 ;
-                    sh:path gas:hasInclinationType ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 33 ;
-                    sh:path gas:hasStratigraphyIntervals ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 72 ;
-                    sh:path gas:hasStationName ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 29 ;
-                    sh:path gas:hasStartPoint ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 13 ;
-                    sh:path dcterms:isPartOf ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 51 ;
-                    sh:path gas:hasTotalLength ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 63 ;
-                    sh:path gas:hasRegionName ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 73 ;
-                    sh:path gas:hasGravityValue ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 66 ;
-                    sh:path gas:hasRemark ],
-                [ sh:group prez:OtherProperties ;
                     sh:order 47 ;
                     sh:path gas:hasMaxLineSpacing ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 11 ;
-                    sh:path rdf:type ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 61 ;
-                    sh:path gas:hasLocationDescription ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 21 ;
-                    sh:path gas:hasEndDate ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 26 ;
-                    sh:path gas:hasBoreholeLength ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 4 ;
-                    sh:path gas:hasMaterialClass ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 39 ;
-                    sh:path gas:hasRockPropertiesMeasurements ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 50 ;
-                    sh:path gas:hasTieLength ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 6 ;
-                    sh:path gas:hasDateAcquired ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 62 ;
-                    sh:path gas:hasElevation ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 40 ;
-                    sh:path gas:hasThinSections ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 7 ;
-                    sh:path gas:hasSamplingLocation ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 12 ;
-                    sh:path gas:hasOtherGeologicalData ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 71 ;
-                    sh:path gas:hasPlatformName ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 75 ;
-                    sh:path gas:hasGravityDatum ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 9 ;
-                    sh:path <http://www.opengis.net/ont/geosparql#hasGeometry> ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 24 ;
-                    sh:path gas:hasRigReleaseDate ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 46 ;
-                    sh:path gas:hasMinLineSpacing ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 59 ;
-                    sh:path gas:hasFieldSiteType ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 34 ;
-                    sh:path gas:hasInorganicChemistryAnalyses ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 54 ;
-                    sh:path gas:isOnshoreOffshore ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 36 ;
-                    sh:path gas:hasSHRIMPGeochronology ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 49 ;
-                    sh:path gas:hasLineLength ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 28 ;
-                    sh:path gas:hasParentBorehole ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 32 ;
-                    sh:path gas:hasEarthMaterialIntervals ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 2 ;
-                    sh:path gas:hasSampleType ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 1 ;
-                    sh:path gas:hasFoiType ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 76 ;
-                    sh:path gas:hasEarthMaterial ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 35 ;
-                    sh:path gas:hasOrganicChemistryAnalyses ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 58 ;
-                    sh:path gas:hasProcessor ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 64 ;
-                    sh:path gas:hasOriginator ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 55 ;
-                    sh:path gas:hasOwner ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 30 ;
-                    sh:path gas:hasGeologicalProvinces ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 48 ;
-                    sh:path gas:hasTieSpacing ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 56 ;
-                    sh:path gas:hasOperator ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 0 ;
-                    sh:path gas:hasFoiName ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 17 ;
-                    sh:path gas:hasDriller ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 60 ;
-                    sh:path gas:hasProject ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 70 ;
-                    sh:path gas:hasPlatformType ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 10 ;
-                    sh:path rdfs:label ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 67 ;
-                    sh:path gas:hasPurpose ],
-                [ sh:group prez:OtherProperties ;
-                    sh:order 42 ;
-                    sh:path gas:hasBoreholeReports ],
                 [ sh:group prez:OtherProperties ;
                     sh:order 31 ;
                     sh:path gas:hasTenement ],
                 [ sh:group prez:OtherProperties ;
-                    sh:order 16 ;
+                    sh:order 59 ;
+                    sh:path gas:hasFieldSiteType ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 27 ;
+                    sh:path gas:hasKickoffDepth ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 12 ;
+                    sh:path gas:hasOtherGeologicalData ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 74 ;
+                    sh:path gas:hasGravityUOM ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 51 ;
+                    sh:path gas:hasTotalLength ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 67 ;
+                    sh:path gas:hasPurpose ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 33 ;
+                    sh:path gas:hasStratigraphyIntervals ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 75 ;
+                    sh:path gas:hasGravityDatum ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 8 ;
+                    sh:path <http://www.opengis.net/ont/geosparql#sfWithin> ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 73 ;
+                    sh:path gas:hasGravityValue ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 56 ;
                     sh:path gas:hasOperator ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 45 ;
+                    sh:path gas:hasMeasurementType ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 41 ;
+                    sh:path gas:hasLinkedFiles ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 58 ;
+                    sh:path gas:hasProcessor ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 43 ;
+                    sh:path gas:hasSurveyType ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 2 ;
+                    sh:path gas:hasSampleType ],
                 [ sh:group prez:OtherProperties ;
                     sh:order 15 ;
                     sh:path skos:altLabel ],
                 [ sh:group prez:OtherProperties ;
-                    sh:order 3 ;
-                    sh:path gas:hasSamplingMethod ],
+                    sh:order 77 ;
+                    sh:path <http://qudt.org/schema/qudt/length> ],
                 [ sh:group prez:OtherProperties ;
-                    sh:order 20 ;
-                    sh:path gas:hasStartDate ],
+                    sh:order 13 ;
+                    sh:path dcterms:isPartOf ],
                 [ sh:group prez:OtherProperties ;
-                    sh:order 38 ;
-                    sh:path gas:hasGroundwaterHydrochemistryAnalyses ],
+                    sh:order 4 ;
+                    sh:path gas:hasMaterialClass ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 50 ;
+                    sh:path gas:hasTieLength ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 42 ;
+                    sh:path gas:hasBoreholeReports ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 21 ;
+                    sh:path gas:hasEndDate ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 0 ;
+                    sh:path gas:hasFoiName ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 1 ;
+                    sh:path gas:hasFoiType ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 11 ;
+                    sh:path rdf:type ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 54 ;
+                    sh:path gas:isOnshoreOffshore ],
                 [ sh:group prez:OtherProperties ;
                     sh:order 57 ;
                     sh:path gas:hasContractor ],
                 [ sh:group prez:OtherProperties ;
+                    sh:order 62 ;
+                    sh:path gas:hasElevation ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 5 ;
+                    sh:path gas:hasSampleOriginator ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 23 ;
+                    sh:path prov:endedAtTime ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 28 ;
+                    sh:path gas:hasParentBorehole ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 10 ;
+                    sh:path rdfs:label ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 55 ;
+                    sh:path gas:hasOwner ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 39 ;
+                    sh:path gas:hasRockPropertiesMeasurements ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 70 ;
+                    sh:path gas:hasPlatformType ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 24 ;
+                    sh:path gas:hasRigReleaseDate ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 34 ;
+                    sh:path gas:hasInorganicChemistryAnalyses ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 71 ;
+                    sh:path gas:hasPlatformName ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 46 ;
+                    sh:path gas:hasMinLineSpacing ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 35 ;
+                    sh:path gas:hasOrganicChemistryAnalyses ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 29 ;
+                    sh:path gas:hasStartPoint ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 22 ;
+                    sh:path prov:startedAtTime ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 64 ;
+                    sh:path gas:hasOriginator ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 38 ;
+                    sh:path gas:hasGroundwaterHydrochemistryAnalyses ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 76 ;
+                    sh:path gas:hasEarthMaterial ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 30 ;
+                    sh:path gas:hasGeologicalProvinces ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 60 ;
+                    sh:path gas:hasProject ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 66 ;
+                    sh:path gas:hasRemark ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 25 ;
+                    sh:path gas:hasInclinationType ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 48 ;
+                    sh:path gas:hasTieSpacing ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 36 ;
+                    sh:path gas:hasSHRIMPGeochronology ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 18 ;
+                    sh:path gas:hasDrillStartDate ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 9 ;
+                    sh:path <http://www.opengis.net/ont/geosparql#hasGeometry> ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 61 ;
+                    sh:path gas:hasLocationDescription ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 63 ;
+                    sh:path gas:hasRegionName ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 68 ;
+                    sh:path gas:hasBoreholeDetails ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 6 ;
+                    sh:path gas:hasDateAcquired ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 72 ;
+                    sh:path gas:hasStationName ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 40 ;
+                    sh:path gas:hasThinSections ],
+                [ sh:group prez:OtherProperties ;
+                    sh:order 14 ;
+                    sh:path dcterms:identifier ],
+                [ sh:group prez:OtherProperties ;
                     sh:order 69 ;
                     sh:path gas:hasBoreholeStatus ],
                 [ sh:group prez:OtherProperties ;
-                    sh:order 53 ;
-                    sh:path gas:hasTieAzimuth ] ;
+                    sh:order 7 ;
+                    sh:path gas:hasSamplingLocation ] ;
             sh:targetClass "TODO" ] .
 

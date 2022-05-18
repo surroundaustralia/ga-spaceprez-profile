@@ -30,12 +30,12 @@
     prof:isProfileOf <https://w3id.org/profile/spaceprez> ;
     dcterms:identifier "gas" ;
     altr-ext:constrainsClass
-        tern:MaterialSample , gas:Borehole ;
+        gas:Borehole , gas:FieldSite , gas:GravityStation, gas:MeasureSection , gas:MineralOccurence , gas:Mine , tern:MaterialSample , gas:Survey ;
     altr-ext:hasResourceFormat "text/turtle", "application/ld+json", "application/rdf+xml", "text/html" ;
     altr-ext:hasDefaultResourceFormat "text/html" ;
     altr-ext:hasNodeShape [
         a sh:NodeShape ;
-        sh:targetClass gas:Sample ;
+        sh:targetClass gas:Borehole , gas:FieldSite , gas:GravityStation, gas:MeasureSection , gas:MineralOccurence , gas:Mine , tern:MaterialSample , gas:Survey ;
         sh:closed true ;
         sh:property [ sh:group prez:OtherProperties ;
                 sh:order 19 ;
