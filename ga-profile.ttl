@@ -12,7 +12,14 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix tern: <https://w3id.org/tern/ontologies/tern/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix earth-mat-wfs: <https://services.ga.gov.au/gis/boreholes/wfs?REQUEST=GetFeature&SERVICE=WFS&version=1.1.0&typename=bh:BoreholeStratigraphyLogs&cql_filter=> .
+@prefix wfs-inorgan-geochem: <https://services.ga.gov.au/gis/inorganic-geochemistry/wfs?REQUEST=GetFeature&SERVICE=WFS&version=1.1.0&typename=geochemistry:Samples&cql_filter=(geochemistry:eno=> .
+@prefix lf: <https://services.ga.gov.au/gis/linked-files/ows?REQUEST=GetFeature&SERVICE=WFS&version=1.1.0&typename=files:LinkedFileDescriptions&cql_filter=((files:entity_pid%20ilike%20%27http://pid.geoscience.gov.au/feature/ga/borehole/> .
+@prefix wfs-geochron-iso: <https://services.ga.gov.au/gis/geochronology-isotopes/wfs?REQUEST=GetFeature&SERVICE=WFS&version=1.1.0&typename=isotope:websvc_interpreted_age_samples_all_geochronology&cql_filter=((isotope:sampling_feature_id%20ilike%20%27http://pid.geoscience.gov.au/site/ga/> .
+@prefix wfs-rock-props: <https://services.ga.gov.au/gis/rock-properties/wfs?service=wfs&amp;request=GetFeature&amp;typename=rockprops:BulkDensity,rockprops:Chargeability,rockprops:ElectricalConductivity,rockprops:ElectricalResistivity,rockprops:GammaBulkDensity,rockprops:HydraulicConductivity,rockprops:KoenigsbergerRatio,rockprops:MagneticSusceptibility,rockprops:NmrRelaxation,rockprops:NaturalGamma,rockprops:Porosity,rockprops:RemanentMagnetisation,rockprops:SonicVelocity&amp;version=1.1.0&amp;outputformat=gml3&amp;cql_filter=(rockprops:samplingfeatureno=%3c607071%3e)&amp;maxfeatures=> .
+@prefix wfs-hydro-geo: <https://services.ga.gov.au/gis/hydrogeochemistry/ows?request=GetFeature&service=WFS&typename=groundwater:websvc_hydrochem_props_field_measurements&version=1.1.0&cql_filter=(groundwater:eno=607071)&maxfeatures=> .
+@prefix wfs-petro-rocks: <https://services.ga.gov.au/gis/petroleum-source-rocks/wfs?REQUEST=GetFeature&SERVICE=WFS&version=1.1.0&typename=OrgChem:WEBSVC_PYROLYSIS_HYDROGEN_INDEX&cql_filter=(Orgchem:eno=> .
+@prefix wfs-boreholes: <https://services.ga.gov.au/gis/boreholes/wfs?REQUEST=GetFeature&SERVICE=WFS&version=1.1.0&typename=bh:BoreholeStratigraphyLogs&cql_filter=(bh:ENO=> .
+
 
 
 
