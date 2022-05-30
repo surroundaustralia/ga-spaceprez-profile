@@ -12,6 +12,8 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix tern: <https://w3id.org/tern/ontologies/tern/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix earth-mat-wfs: <https://services.ga.gov.au/gis/boreholes/wfs?REQUEST=GetFeature&SERVICE=WFS&version=1.1.0&typename=bh:BoreholeStratigraphyLogs&cql_filter=> .
+
 
 
 <https://w3id.org/profile/ga-spaceprez>

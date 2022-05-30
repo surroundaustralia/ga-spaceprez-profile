@@ -1,2 +1,0 @@
-http://www.opengis.net/ont/geosparql#asWKT
-http://www.opengis.net/ont/geosparql#asGeoJSON
