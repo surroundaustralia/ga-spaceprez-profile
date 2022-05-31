@@ -1,6 +1,7 @@
 @prefix altr-ext: <http://www.w3.org/ns/dx/conneg/altr-ext#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix gas: <http://pid.geoscience.gov.au/def/ga-sampling/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix prez: <https://surroundaustralia.com/prez/> .
 @prefix prof: <http://www.w3.org/ns/dx/prof/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -47,6 +48,18 @@
         sh:targetClass gas:Borehole ;
         sh:closed true ;
         sh:property
+            [ sh:group prez:MainProperties ;
+                sh:order 0.1 ;
+                sh:path dcterms:title ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.2 ;
+                sh:path geo:hasGeometry ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.3 ;
+                sh:path geo:asGeoJSON ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.4 ;
+                sh:path geo:asWKT ],
             [ sh:group prez:OtherProperties ;
                 sh:order 1 ;
                 sh:path gas:hasPurpose ],
@@ -121,6 +134,18 @@
         sh:targetClass gas:Fieldsite ;
         sh:closed true ;
         sh:property
+            [ sh:group prez:MainProperties ;
+                sh:order 0.1 ;
+                sh:path dcterms:title ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.2 ;
+                sh:path geo:hasGeometry ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.3 ;
+                sh:path geo:asGeoJSON ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.4 ;
+                sh:path geo:asWKT ],
             [ sh:group prez:OtherProperties ;
                 sh:order 1 ;
                 sh:path gas:hasPurpose ],
@@ -177,6 +202,18 @@
         sh:targetClass gas:Mine ;
         sh:closed true ;
         sh:property
+            [ sh:group prez:MainProperties ;
+                sh:order 0.1 ;
+                sh:path dcterms:title ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.2 ;
+                sh:path geo:hasGeometry ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.3 ;
+                sh:path geo:asGeoJSON ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.4 ;
+                sh:path geo:asWKT ],
             [ sh:group prez:OtherProperties ;
                 sh:order 1 ;
                 sh:path gas:hasOperatingStatus ],
@@ -200,6 +237,18 @@
         sh:targetClass gas:MineralOccurence ;
         sh:closed true ;
         sh:property
+            [ sh:group prez:MainProperties ;
+                sh:order 0.1 ;
+                sh:path dcterms:title ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.2 ;
+                sh:path geo:hasGeometry ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.3 ;
+                sh:path geo:asGeoJSON ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.4 ;
+                sh:path geo:asWKT ],
             [ sh:group prez:OtherProperties ;
                 sh:order 1 ;
                 sh:path gas:hasOccurenceType ],
@@ -238,6 +287,18 @@
         sh:targetClass gas:GravityStation ;
         sh:closed true ;
         sh:property
+            [ sh:group prez:MainProperties ;
+                sh:order 0.1 ;
+                sh:path dcterms:title ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.2 ;
+                sh:path geo:hasGeometry ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.3 ;
+                sh:path geo:asGeoJSON ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.4 ;
+                sh:path geo:asWKT ],
             [ sh:group prez:OtherProperties ;
                 sh:order 1 ;
                 sh:path gas:hasStationNo ],
@@ -276,6 +337,18 @@
         sh:targetClass gas:MeasuredSection ;
         sh:closed true ;
         sh:property
+            [ sh:group prez:MainProperties ;
+                sh:order 0.1 ;
+                sh:path dcterms:title ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.2 ;
+                sh:path geo:hasGeometry ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.3 ;
+                sh:path geo:asGeoJSON ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.4 ;
+                sh:path geo:asWKT ],
             [ sh:group prez:OtherProperties ;
                 sh:order 1 ;
                 sh:path skos:altLabel ],
@@ -338,6 +411,18 @@
         sh:targetClass tern:MaterialSample ;
         sh:closed true ;
         sh:property
+            [ sh:group prez:MainProperties ;
+                sh:order 0.1 ;
+                sh:path dcterms:title ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.2 ;
+                sh:path geo:hasGeometry ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.3 ;
+                sh:path geo:asGeoJSON ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.4 ;
+                sh:path geo:asWKT ],
             [ sh:group prez:OtherProperties ;
                 sh:order 1 ;
                 sh:path gas:hasFoiName ],
@@ -406,6 +491,18 @@
         sh:targetClass gas:Survey ;
         sh:closed true ;
         sh:property
+            [ sh:group prez:MainProperties ;
+                sh:order 0.1 ;
+                sh:path dcterms:title ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.2 ;
+                sh:path geo:hasGeometry ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.3 ;
+                sh:path geo:asGeoJSON ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.4 ;
+                sh:path geo:asWKT ],
             [ sh:group prez:OtherProperties ;
                 sh:order 1 ;
                 sh:path gas:hasCountry ],
