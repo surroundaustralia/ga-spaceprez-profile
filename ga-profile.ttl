@@ -1,7 +1,11 @@
 @prefix altr-ext: <http://www.w3.org/ns/dx/conneg/altr-ext#> .
+@prefix dash: <http://datashapes.org/dash#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix country: <http://linked.data.gov.au/dataset/asgs2016/country/> .
 @prefix gas: <http://pid.geoscience.gov.au/def/ga-sampling/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix mtype: <http://pid.geoscience.gov.au/def/voc/ga/materialtype/> .
+@prefix org: <http://pid.geoscience.gov.au/org/ga/> .
 @prefix prez: <https://surroundaustralia.com/prez/> .
 @prefix prof: <http://www.w3.org/ns/dx/prof/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -51,9 +55,6 @@
             [ sh:group prez:MainProperties ;
                 sh:order 0.1 ;
                 sh:path dcterms:title ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.2 ;
-                sh:path geo:hasGeometry ],
             [ sh:group prez:GeometryProperties ;
                 sh:order 0.3 ;
                 sh:path geo:asGeoJSON ],
@@ -134,9 +135,9 @@
         sh:targetClass gas:Fieldsite ;
         sh:closed true ;
         sh:property
-            [ sh:group prez:MainProperties ;
-                sh:order 0.1 ;
-                sh:path dcterms:title ],
+#            [ sh:group prez:MainProperties ;
+#                sh:order 0.1 ;
+#                sh:path dcterms:title ],
             [ sh:group prez:GeometryProperties ;
                 sh:order 0.2 ;
                 sh:path geo:hasGeometry ],
@@ -292,13 +293,20 @@
                 sh:path dcterms:title ],
             [ sh:group prez:GeometryProperties ;
                 sh:order 0.2 ;
-                sh:path geo:hasGeometry ],
+                sh:path geo:hasGeometry ;
+                dash:hidden "true" ],
             [ sh:group prez:GeometryProperties ;
                 sh:order 0.3 ;
-                sh:path geo:asGeoJSON ],
+                sh:path geo:asGeoJSON ;
+                dash:hidden "true" ],
             [ sh:group prez:GeometryProperties ;
                 sh:order 0.4 ;
-                sh:path geo:asWKT ],
+                sh:path geo:asWKT ;
+                dash:hidden "true" ],
+            [ sh:group prez:OtherProperties ;
+                sh:order 0.5 ;
+                sh:path dcterms:identifier ;
+                dash:hidden "true" ],
             [ sh:group prez:OtherProperties ;
                 sh:order 1 ;
                 sh:path gas:hasStationNo ],
@@ -412,23 +420,54 @@
         sh:closed true ;
         sh:property
             [ sh:group prez:MainProperties ;
+                sh:order 0.01 ;
+                sh:path dcterms:title ;
+                dash:hidden "true"],
+            [ sh:group prez:MainProperties ;
+                sh:order 0.02 ;
+                sh:path rdfs:label ;
+                dash:hidden "true"],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.03 ;
+                sh:path geo:hasGeometry ;
+                dash:hidden "true" ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.04 ;
+                sh:path geo:asGeoJSON ;
+                dash:hidden "true" ],
+            [ sh:group prez:GeometryProperties ;
+                sh:order 0.05 ;
+                sh:path geo:asWKT ;
+                dash:hidden "true" ],
+            [ sh:group prez:OtherProperties ;
+                sh:order 0.06 ;
+                sh:path dcterms:identifier ;
+                dash:hidden "true" ],
+            [ sh:group prez:OtherProperties ;
+                sh:order 0.07 ;
+                sh:path rdf:type ;
+                dash:hidden "true" ],
+            [ sh:group prez:OtherProperties ;
                 sh:order 0.1 ;
-                sh:path dcterms:title ],
-            [ sh:group prez:GeometryProperties ;
+                sh:path gas:hasSampleNo ],
+            [ sh:group prez:OtherProperties ;
                 sh:order 0.2 ;
-                sh:path geo:hasGeometry ],
-            [ sh:group prez:GeometryProperties ;
+                sh:path gas:hasIGSN ],
+            [ sh:group prez:OtherProperties ;
                 sh:order 0.3 ;
-                sh:path geo:asGeoJSON ],
-            [ sh:group prez:GeometryProperties ;
+                sh:path gas:hasSampleID ],
+            [ sh:group prez:OtherProperties ;
                 sh:order 0.4 ;
-                sh:path geo:asWKT ],
+                sh:path gas:hasENO ],
             [ sh:group prez:OtherProperties ;
-                sh:order 1 ;
-                sh:path gas:hasFoiName ],
+                sh:order 0.5 ;
+                sh:path gas:hasSamplingFeatureName ],
             [ sh:group prez:OtherProperties ;
-                sh:order 2 ;
-                sh:path gas:hasFoiType ],
+                sh:order 0.6 ;
+                sh:path gas:hasSamplingFeatureType ],
+            [ sh:group prez:OtherProperties ;
+                sh:order 0.7 ;
+                sh:path gas:hasSampleType ],
             [ sh:group prez:OtherProperties ;
                 sh:order 3 ;
                 sh:path gas:hasSamplingMethod ],
@@ -449,7 +488,7 @@
                 sh:path gas:hasStructuralMeasurements ],
             [ sh:group prez:OtherProperties ;
                 sh:order 9 ;
-                sh:path gas:hasInorganicChemistry ],
+                sh:path gas:hasInorganicGeochemistry ],
             [ sh:group prez:OtherProperties ;
                 sh:order 10 ;
                 sh:path gas:hasOrganicGeochemistry ],
@@ -471,6 +510,12 @@
             [ sh:group prez:OtherProperties ;
                 sh:order 16 ;
                 sh:path gas:hasOtherGeologicalData ],
+            [ sh:group prez:OtherProperties ;
+                sh:order 16.1 ;
+                sh:path gas:hasLongitude ],
+            [ sh:group prez:OtherProperties ;
+                sh:order 16.2 ;
+                sh:path gas:hasLatitude ],
             [ sh:group prez:OtherProperties ;
                 sh:order 17 ;
                 sh:path gas:hasCountry ],
@@ -617,3 +662,7 @@
     sdo:name "SURROUND Australia Pty Ltd" ;
     sdo:url "https://surroundaustralia.com"^^xsd:anyURI ;
 .
+
+org:geoscienceaustralia
+    rdfs:label "Geoscience Australia" ;
+    .
