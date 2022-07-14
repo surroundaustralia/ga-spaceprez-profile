@@ -289,23 +289,32 @@
         sh:closed true ;
         sh:property
             [ sh:group prez:MainProperties ;
-                sh:order 0.1 ;
-                sh:path dcterms:title ],
+                sh:order 0.01 ;
+                sh:path dcterms:title ;
+                dash:hidden "true"],
+            [ sh:group prez:MainProperties ;
+                sh:order 0.02 ;
+                sh:path rdfs:label ;
+                dash:hidden "true"],
             [ sh:group prez:GeometryProperties ;
-                sh:order 0.2 ;
+                sh:order 0.03 ;
                 sh:path geo:hasGeometry ;
                 dash:hidden "true" ],
             [ sh:group prez:GeometryProperties ;
-                sh:order 0.3 ;
+                sh:order 0.04 ;
                 sh:path geo:asGeoJSON ;
                 dash:hidden "true" ],
             [ sh:group prez:GeometryProperties ;
-                sh:order 0.4 ;
+                sh:order 0.05 ;
                 sh:path geo:asWKT ;
                 dash:hidden "true" ],
             [ sh:group prez:OtherProperties ;
-                sh:order 0.5 ;
+                sh:order 0.06 ;
                 sh:path dcterms:identifier ;
+                dash:hidden "true" ],
+            [ sh:group prez:OtherProperties ;
+                sh:order 0.07 ;
+                sh:path rdf:type ;
                 dash:hidden "true" ],
             [ sh:group prez:OtherProperties ;
                 sh:order 1 ;
@@ -322,6 +331,12 @@
             [ sh:group prez:OtherProperties ;
                 sh:order 5 ;
                 sh:path gas:hasDateLastVisited ],
+            [ sh:group prez:OtherProperties ;
+                sh:order 5.1 ;
+                sh:path gas:hasLongitude ],
+            [ sh:group prez:OtherProperties ;
+                sh:order 5.2 ;
+                sh:path gas:hasLatitude ],
             [ sh:group prez:OtherProperties ;
                 sh:order 6 ;
                 sh:path gas:hasGeodeticDatum ],
