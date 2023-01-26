@@ -1,683 +1,1037 @@
-@prefix altr-ext: <http://www.w3.org/ns/dx/conneg/altr-ext#> .
-@prefix dash: <http://datashapes.org/dash#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix country: <http://linked.data.gov.au/dataset/asgs2016/country/> .
-@prefix gas: <http://pid.geoscience.gov.au/def/ga-sampling/> .
-@prefix geo: <http://www.opengis.net/ont/geosparql#> .
-@prefix mtype: <http://pid.geoscience.gov.au/def/voc/ga/materialtype/> .
-@prefix org: <http://pid.geoscience.gov.au/org/ga/> .
-@prefix prez: <https://surroundaustralia.com/prez/> .
-@prefix prof: <http://www.w3.org/ns/dx/prof/> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix role: <http://www.w3.org/ns/dx/prof/role/> .
-@prefix sdo: <https://schema.org/> .
-@prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tern: <https://w3id.org/tern/ontologies/tern/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix wfs-inorgan-geochem: <https://services.ga.gov.au/gis/inorganic-geochemistry/wfs?REQUEST=GetFeature&SERVICE=WFS&version=1.1.0&typename=geochemistry:Samples&cql_filter=(geochemistry:eno=> .
-@prefix lf: <https://services.ga.gov.au/gis/linked-files/ows?REQUEST=GetFeature&SERVICE=WFS&version=1.1.0&typename=files:LinkedFileDescriptions&cql_filter=((files:entity_pid%20ilike%20%27http://pid.geoscience.gov.au/feature/ga/borehole/> .
-@prefix wfs-geochron-iso: <https://services.ga.gov.au/gis/geochronology-isotopes/wfs?REQUEST=GetFeature&SERVICE=WFS&version=1.1.0&typename=isotope:websvc_interpreted_age_samples_all_geochronology&cql_filter=((isotope:sampling_feature_id%20ilike%20%27http://pid.geoscience.gov.au/site/ga/> .
-@prefix wfs-rock-props: <https://services.ga.gov.au/gis/rock-properties/wfs?service=wfs&amp;request=GetFeature&amp;typename=rockprops:BulkDensity,rockprops:Chargeability,rockprops:ElectricalConductivity,rockprops:ElectricalResistivity,rockprops:GammaBulkDensity,rockprops:HydraulicConductivity,rockprops:KoenigsbergerRatio,rockprops:MagneticSusceptibility,rockprops:NmrRelaxation,rockprops:NaturalGamma,rockprops:Porosity,rockprops:RemanentMagnetisation,rockprops:SonicVelocity&amp;version=1.1.0&amp;outputformat=gml3&amp;cql_filter=(rockprops:samplingfeatureno=%3c607071%3e)&amp;maxfeatures=> .
-@prefix wfs-hydro-geo: <https://services.ga.gov.au/gis/hydrogeochemistry/ows?request=GetFeature&service=WFS&typename=groundwater:websvc_hydrochem_props_field_measurements&version=1.1.0&cql_filter=(groundwater:eno=607071)&maxfeatures=> .
-@prefix wfs-petro-rocks: <https://services.ga.gov.au/gis/petroleum-source-rocks/wfs?REQUEST=GetFeature&SERVICE=WFS&version=1.1.0&typename=OrgChem:WEBSVC_PYROLYSIS_HYDROGEN_INDEX&cql_filter=(Orgchem:eno=> .
-@prefix wfs-boreholes: <https://services.ga.gov.au/gis/boreholes/wfs?REQUEST=GetFeature&SERVICE=WFS&version=1.1.0&typename=bh:BoreholeStratigraphyLogs&cql_filter=(bh:ENO=> .
+PREFIX altr-ext: <http://www.w3.org/ns/dx/conneg/altr-ext#>
+PREFIX dash: <http://datashapes.org/dash#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX gas: <http://pid.geoscience.gov.au/def/ga-sampling/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX org1: <http://pid.geoscience.gov.au/org/ga/>
+PREFIX prez: <https://surroundaustralia.com/prez/>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX role: <http://www.w3.org/ns/dx/prof/role/>
+PREFIX sdo: <https://schema.org/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX tern: <https://w3id.org/tern/ontologies/tern/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-
-
+org1:geoscienceaustralia
+    rdfs:label "Geoscience Australia" ;
+.
 
 <https://w3id.org/profile/ga-spaceprez>
     a prof:Profile ;
     dcterms:created "2022-04-21"^^xsd:date ;
     dcterms:creator <https://linked.data.gov.au/org/surround> ;
+    dcterms:identifier "gas" ;
     dcterms:modified "2022-04-21"^^xsd:date ;
     dcterms:publisher <https://linked.data.gov.au/org/surround> ;
-    skos:definition """A Geoscience Australia extension to the Surround Australia SpacePrez profile. This contains a specification, validators and scripts used to define, test and convert RDF data to ensure that it can be used by the SpacePrez API tool."""@en ;
     dcterms:title "GA SpacePrez Profile" ;
-    prof:hasResource
-        <https://w3id.org/profile/ga-spaceprez/spec> ,
-        <https://w3id.org/profile/ga-spaceprez/validator> ,
-        <https://w3id.org/profile/ga-spaceprez/compounded-validator> ,
-        <https://w3id.org/profile/ga-spaceprez/repo> ;
-    prof:isProfileOf <https://w3id.org/profile/spaceprez> ;
-    dcterms:identifier "gas" ;
+    skos:definition "A Geoscience Australia extension to the Surround Australia SpacePrez profile. This contains a specification, validators and scripts used to define, test and convert RDF data to ensure that it can be used by the SpacePrez API tool."@en ;
     altr-ext:constrainsClass
-        gas:Borehole , gas:FieldSite , gas:GravityStation, gas:MeasuredSection , gas:MineralOccurence , gas:Mine , tern:MaterialSample , gas:Survey ;
-    altr-ext:hasResourceFormat "text/turtle", "application/ld+json", "application/rdf+xml", "text/html" ;
+        gas:Borehole ,
+        gas:FieldSite ,
+        gas:GravityStation ,
+        gas:MeasuredSection ,
+        gas:Mine ,
+        gas:MineralOccurence ,
+        gas:Survey ,
+        tern:MaterialSample ;
     altr-ext:hasDefaultResourceFormat "text/html" ;
-    altr-ext:hasNodeShape [
-        a sh:NodeShape ;
-        sh:targetClass gas:Borehole ;
-        sh:closed true ;
-        sh:property
-            [ sh:group prez:MainProperties ;
-                sh:order 0.1 ;
-                sh:path dcterms:title ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.3 ;
-                sh:path geo:asGeoJSON ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.4 ;
-                sh:path geo:asWKT ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 1 ;
-                sh:path gas:hasPurpose ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 2 ;
-                sh:path gas:hasOperator ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 3 ;
-                sh:path gas:hasDriller ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 4 ;
-                sh:path gas:hasDrillStartDate ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 5 ;
-                sh:path gas:hasDrillEndDate ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 6 ;
-                sh:path gas:hasRigReleaseDate ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 7 ;
-                sh:path gas:hasBoreholeStatus ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 8 ;
-                sh:path gas:hasInclinationType ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 9 ;
-                sh:path gas:hasBoreholeLength ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 10 ;
-                sh:path gas:hasKickoffDepth ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 11 ;
-                sh:path gas:hasParentBorehole ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 12 ;
-                sh:path gas:hasStartPoint ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 13 ;
-                sh:path gas:hasGeologicalProvinces ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 14 ;
-                sh:path gas:hasTenement ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 15 ;
-                sh:path gas:hasEarthMaterialIntervals ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 16 ;
-                sh:path gas:hasStratigraphyIntervals ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 17 ;
-                sh:path gas:hasInorganicChemistryAnalyses ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 18 ;
-                sh:path gas:hasOrganicChemistryAnalyses ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 19 ;
-                sh:path gas:hasSHRIMPGeochronology ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 20 ;
-                sh:path gas:hasOtherIsotopesAndGeochronology ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 21 ;
-                sh:path gas:hasGroundwaterHydrochemistryAnalyses ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 22 ;
-                sh:path gas:hasRockPropertiesMeasurements ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 23 ;
-                sh:path gas:hasThinSections ];
-        ] , [
-        a sh:NodeShape ;
-        sh:targetClass gas:Fieldsite ;
-        sh:closed true ;
-        sh:property
-#            [ sh:group prez:MainProperties ;
-#                sh:order 0.1 ;
-#                sh:path dcterms:title ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.2 ;
-                sh:path geo:hasGeometry ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.3 ;
-                sh:path geo:asGeoJSON ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.4 ;
-                sh:path geo:asWKT ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 1 ;
-                sh:path gas:hasPurpose ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 2 ;
-                sh:path gas:hasProject ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 3 ;
-                sh:path gas:hasLocationDescription ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 4 ;
-                sh:path gas:hasElevation ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 5 ;
-                sh:path gas:hasRegionName ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 6 ;
-                sh:path gas:hasOriginator ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 7 ;
-                sh:path gas:hasObservationDate ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 8 ;
-                sh:path gas:hasRemark ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 9 ;
-                sh:path gas:hasEarthMaterials ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 10 ;
-                sh:path gas:hasStratigraphy ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 11 ;
-                sh:path gas:hasStructuralMeasurement ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 12 ;
-                sh:path gas:hasInorganicChemistry ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 13 ;
-                sh:path gas:hasOrganicGeochemistry ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 14 ;
-                sh:path gas:hasSHRIMPGeochronology ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 15 ;
-                sh:path gas:hasIsotopes ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 16 ;
-                sh:path gas:hasGroundwaterHydrochemistry ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 17 ;
-                sh:path gas:hasRockProperties ];
-        ] , [
-        a sh:NodeShape ;
-        sh:targetClass gas:Mine ;
-        sh:closed true ;
-        sh:property
-            [ sh:group prez:MainProperties ;
-                sh:order 0.1 ;
-                sh:path dcterms:title ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.2 ;
-                sh:path geo:hasGeometry ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.3 ;
-                sh:path geo:asGeoJSON ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.4 ;
-                sh:path geo:asWKT ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 1 ;
-                sh:path gas:hasOperatingStatus ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 2 ;
-                sh:path gas:hasLocationDescription ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 3 ;
-                sh:path skos:altLabel ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 4 ;
-                sh:path gas:hasCommodities ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 5 ;
-                sh:path gas:hasAssociatedCompanies ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 6 ;
-                sh:path gas:hasProductionResults ];
-        ] , [
-        a sh:NodeShape ;
-        sh:targetClass gas:MineralOccurence ;
-        sh:closed true ;
-        sh:property
-            [ sh:group prez:MainProperties ;
-                sh:order 0.1 ;
-                sh:path dcterms:title ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.2 ;
-                sh:path geo:hasGeometry ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.3 ;
-                sh:path geo:asGeoJSON ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.4 ;
-                sh:path geo:asWKT ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 1 ;
-                sh:path gas:hasOccurenceType ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 2 ;
-                sh:path gas:hasLocationDescription ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 3 ;
-                sh:path skos:altLabel ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 4 ;
-                sh:path gas:hasCommodities ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 5 ;
-                sh:path gas:hasAssociatedCompanies ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 6 ;
-                sh:path gas:hasProvinces ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 7 ;
-                sh:path gas:hasMaxAgeName ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 8 ;
-                sh:path gas:hasMinAgeName ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 9 ;
-                sh:path gas:hasResources ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 10 ;
-                sh:path gas:hasSamples ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 11 ;
-                sh:path gas:hasStratigraphy ];
-        ] , [
-        a sh:NodeShape ;
-        sh:targetClass gas:GravityStation ;
-        sh:closed true ;
-        sh:property
-            [ sh:group prez:MainProperties ;
-                sh:order 0.01 ;
-                sh:path dcterms:title ;
-                dash:hidden "true"],
-            [ sh:group prez:MainProperties ;
-                sh:order 0.02 ;
-                sh:path rdfs:label ;
-                dash:hidden "true"],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.03 ;
-                sh:path geo:hasGeometry ;
-                dash:hidden "true" ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.04 ;
-                sh:path geo:asGeoJSON ;
-                dash:hidden "true" ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.05 ;
-                sh:path geo:asWKT ;
-                dash:hidden "true" ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 0.06 ;
-                sh:path dcterms:identifier ;
-                dash:hidden "true" ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 0.07 ;
-                sh:path rdf:type ;
-                dash:hidden "true" ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 1 ;
-                sh:path gas:hasStationNo ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 2 ;
-                sh:path gas:hasCity ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 3 ;
-                sh:path gas:hasSite ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 4 ;
-                sh:path gas:hasCondition ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 5 ;
-                sh:path gas:hasDateLastVisited ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 5.1 ;
-                sh:path gas:hasLongitude ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 5.2 ;
-                sh:path gas:hasLatitude ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 6 ;
-                sh:path gas:hasGeodeticDatum ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 7 ;
-                sh:path gas:hasGravityValue ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 8 ;
-                sh:path gas:hasGravityUOM ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 9 ;
-                sh:path gas:hasGravityDatum ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 10 ;
-                sh:path gas:hasStationType ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 11 ;
-                sh:path gas:hasState ];
-        ] , [
-        a sh:NodeShape ;
-        sh:targetClass gas:MeasuredSection ;
-        sh:closed true ;
-        sh:property
-            [ sh:group prez:MainProperties ;
-                sh:order 0.1 ;
-                sh:path dcterms:title ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.2 ;
-                sh:path geo:hasGeometry ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.3 ;
-                sh:path geo:asGeoJSON ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.4 ;
-                sh:path geo:asWKT ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 1 ;
-                sh:path skos:altLabel ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 2 ;
-                sh:path gas:hasMeasuredSectionType ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 3 ;
-                sh:path gas:hasPurpose ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 4 ;
-                sh:path gas:hasProject ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 5 ;
-                sh:path gas:hasElevation ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 6 ;
-                sh:path gas:hasCountry ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 7 ;
-                sh:path gas:hasState ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 8 ;
-                sh:path gas:hasLocationDescription ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 9 ;
-                sh:path gas:hasMeasuredSectionLength ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 10 ;
-                sh:path gas:hasOriginator ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 11 ;
-                sh:path gas:hasRemark ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 11.1 ;
-                sh:path gas:hasEarthMaterials ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 11.1 ;
-                sh:path gas:hasStratigraphy ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 12 ;
-                sh:path gas:hasInorganicChemistry ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 13 ;
-                sh:path gas:hasOrganicGeochemistry ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 14 ;
-                sh:path gas:hasSHRIMPGeochronology ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 15 ;
-                sh:path gas:hasIsotopes ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 16 ;
-                sh:path gas:hasGroundwaterHydrochemistry ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 17 ;
-                sh:path gas:hasRockProperties ];
-        ] , [
-        a sh:NodeShape ;
-        sh:targetClass tern:MaterialSample ;
-        sh:closed true ;
-        sh:property
-            [ sh:group prez:MainProperties ;
-                sh:order 0.01 ;
-                sh:path dcterms:title ;
-                dash:hidden "true"],
-            [ sh:group prez:MainProperties ;
-                sh:order 0.02 ;
-                sh:path rdfs:label ;
-                dash:hidden "true"],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.03 ;
-                sh:path geo:hasGeometry ;
-                dash:hidden "true" ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.04 ;
-                sh:path geo:asGeoJSON ;
-                dash:hidden "true" ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.05 ;
-                sh:path geo:asWKT ;
-                dash:hidden "true" ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 0.06 ;
-                sh:path dcterms:identifier ;
-                dash:hidden "true" ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 0.07 ;
-                sh:path rdf:type ;
-                dash:hidden "true" ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 0.1 ;
-                sh:path gas:hasSampleNo ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 0.2 ;
-                sh:path gas:hasIGSN ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 0.3 ;
-                sh:path gas:hasSampleID ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 0.4 ;
-                sh:path gas:hasENO ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 0.5 ;
-                sh:path gas:hasSamplingFeatureName ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 0.6 ;
-                sh:path gas:hasSamplingFeatureType ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 0.7 ;
-                sh:path gas:hasSampleType ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 3 ;
-                sh:path gas:hasSamplingMethod ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 4 ;
-                sh:path gas:hasMaterialClass ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 5 ;
-                sh:path gas:hasEarthMaterials ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 6 ;
-                sh:path gas:hasStratigraphicUnit ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 7 ;
-                sh:path gas:hasSampleRemark ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 8 ;
-                sh:path gas:hasStructuralMeasurements ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 9 ;
-                sh:path gas:hasInorganicGeochemistry ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 10 ;
-                sh:path gas:hasOrganicGeochemistry ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 11 ;
-                sh:path gas:hasGeochronology ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 12 ;
-                sh:path gas:hasIsotopes ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 13 ;
-                sh:path gas:hasGroundwaterHydrochemistry ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 14 ;
-                sh:path gas:hasRockProperties ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 15 ;
-                sh:path gas:hasLinkedFiles ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 16 ;
-                sh:path gas:hasOtherGeologicalData ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 16.1 ;
-                sh:path gas:hasLongitude ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 16.2 ;
-                sh:path gas:hasLatitude ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 17 ;
-                sh:path gas:hasCountry ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 18 ;
-                sh:path gas:hasState ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 19 ;
-                sh:path gas:hasSampleOriginator ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 20 ;
-                sh:path gas:hasDateAcquired ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 21 ;
-                sh:path gas:hasSamplingLocation ]
-        ] , [
-        a sh:NodeShape ;
-        sh:targetClass gas:Survey ;
-        sh:closed true ;
-        sh:property
-            [ sh:group prez:MainProperties ;
-                sh:order 0.1 ;
-                sh:path dcterms:title ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.2 ;
-                sh:path geo:hasGeometry ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.3 ;
-                sh:path geo:asGeoJSON ],
-            [ sh:group prez:GeometryProperties ;
-                sh:order 0.4 ;
-                sh:path geo:asWKT ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 1 ;
-                sh:path gas:hasCountry ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 2 ;
-                sh:path gas:hasState ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 3 ;
-                sh:path gas:isOnshoreOffshore ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 4 ;
-                sh:path gas:hasSurveyType ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 5 ;
-                sh:path gas:hasSurveyDetail ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 6 ;
-                sh:path gas:hasMeasurementType ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 7 ;
-                sh:path gas:hasMinLineSpacing ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 8 ;
-                sh:path gas:hasMaxLineSpacing ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 9 ;
-                sh:path gas:hasTieSpacing ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 10 ;
-                sh:path gas:hasLineLength ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 11 ;
-                sh:path gas:hasTieLength ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 12 ;
-                sh:path gas:hasTotalLength ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 13 ;
-                sh:path gas:hasLineAzimuth ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 14 ;
-                sh:path gas:hasTieAzimuth ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 15 ;
-                sh:path gas:hasOwner ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 16 ;
-                sh:path gas:hasOperator ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 17 ;
-                sh:path gas:hasContractor ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 18 ;
-                sh:path gas:hasProcessor ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 19 ;
-                sh:path gas:hasPlatformType ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 20 ;
-                sh:path gas:hasPlatformName ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 21 ;
-                sh:path prov:startedAtTime ],
-            [ sh:group prez:OtherProperties ;
-                sh:order 22 ;
-                sh:path prov:endedAtTime ];
+    altr-ext:hasNodeShape
+        [
+            a sh:NodeShape ;
+            sh:closed true ;
+            sh:property
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 6 ;
+                    sh:path gas:hasRigReleaseDate
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 7 ;
+                    sh:path gas:hasBoreholeStatus
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 8 ;
+                    sh:path gas:hasInclinationType
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 9 ;
+                    sh:path gas:hasBoreholeLength
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 10 ;
+                    sh:path gas:hasKickoffDepth
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 11 ;
+                    sh:path gas:hasParentBorehole
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 12 ;
+                    sh:path gas:hasStartPoint
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 13 ;
+                    sh:path gas:hasGeologicalProvinces
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 14 ;
+                    sh:path gas:hasTenement
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 15 ;
+                    sh:path gas:hasEarthMaterialIntervals
+                ] ,
+                [
+                    sh:group prez:MainProperties ;
+                    sh:order 0.1 ;
+                    sh:path dcterms:title
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 16 ;
+                    sh:path gas:hasStratigraphyIntervals
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 17 ;
+                    sh:path gas:hasInorganicChemistryAnalyses
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 18 ;
+                    sh:path gas:hasOrganicChemistryAnalyses
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 19 ;
+                    sh:path gas:hasSHRIMPGeochronology
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 20 ;
+                    sh:path gas:hasOtherIsotopesAndGeochronology
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 21 ;
+                    sh:path gas:hasGroundwaterHydrochemistryAnalyses
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 22 ;
+                    sh:path gas:hasRockPropertiesMeasurements
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 23 ;
+                    sh:path gas:hasThinSections
+                ] ,
+                [
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.3 ;
+                    sh:path geo:asGeoJSON
+                ] ,
+                [
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.4 ;
+                    sh:path geo:asWKT
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 1 ;
+                    sh:path gas:hasPurpose
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 2 ;
+                    sh:path gas:hasOperator
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 3 ;
+                    sh:path gas:hasDriller
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 4 ;
+                    sh:path gas:hasDrillStartDate
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 5 ;
+                    sh:path gas:hasDrillEndDate
+                ] ;
+            sh:targetClass gas:Borehole
+        ] ,
+        [
+            a sh:NodeShape ;
+            sh:closed true ;
+            sh:property
+                [
+                    dash:hidden "true" ;
+                    sh:group prez:MainProperties ;
+                    sh:order 0.01 ;
+                    sh:path dcterms:title
+                ] ,
+                [
+                    dash:hidden "true" ;
+                    sh:group prez:MainProperties ;
+                    sh:order 0.02 ;
+                    sh:path rdfs:label
+                ] ,
+                [
+                    dash:hidden "true" ;
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.03 ;
+                    sh:path geo:hasGeometry
+                ] ,
+                [
+                    dash:hidden "true" ;
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.04 ;
+                    sh:path geo:asGeoJSON
+                ] ,
+                [
+                    dash:hidden "true" ;
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.05 ;
+                    sh:path geo:asWKT
+                ] ,
+                [
+                    dash:hidden "true" ;
+                    sh:group prez:OtherProperties ;
+                    sh:order 0.06 ;
+                    sh:path dcterms:identifier
+                ] ,
+                [
+                    dash:hidden "true" ;
+                    sh:group prez:OtherProperties ;
+                    sh:order 0.07 ;
+                    sh:path rdf:type
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 0.1 ;
+                    sh:path gas:hasSampleNo
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 0.2 ;
+                    sh:path gas:hasIGSN
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 0.3 ;
+                    sh:path gas:hasSampleID
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 0.4 ;
+                    sh:path gas:hasENO
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 0.5 ;
+                    sh:path gas:hasSamplingFeatureName
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 0.6 ;
+                    sh:path gas:hasSamplingFeatureType
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 0.7 ;
+                    sh:path gas:hasSampleType
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 3 ;
+                    sh:path gas:hasSamplingMethod
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 4 ;
+                    sh:path gas:hasMaterialClass
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 5 ;
+                    sh:path gas:hasEarthMaterials
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 6 ;
+                    sh:path gas:hasStratigraphicUnit
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 7 ;
+                    sh:path gas:hasSampleRemark
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 8 ;
+                    sh:path gas:hasStructuralMeasurements
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 9 ;
+                    sh:path gas:hasInorganicGeochemistry
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 10 ;
+                    sh:path gas:hasOrganicGeochemistry
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 11 ;
+                    sh:path gas:hasGeochronology
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 12 ;
+                    sh:path gas:hasIsotopes
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 13 ;
+                    sh:path gas:hasGroundwaterHydrochemistry
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 14 ;
+                    sh:path gas:hasRockProperties
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 15 ;
+                    sh:path gas:hasLinkedFiles
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 16 ;
+                    sh:path gas:hasOtherGeologicalData
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 16.1 ;
+                    sh:path gas:hasLongitude
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 16.2 ;
+                    sh:path gas:hasLatitude
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 17 ;
+                    sh:path gas:hasCountry
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 18 ;
+                    sh:path gas:hasState
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 19 ;
+                    sh:path gas:hasSampleOriginator
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 20 ;
+                    sh:path gas:hasDateAcquired
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 21 ;
+                    sh:path gas:hasSamplingLocation
+                ] ;
+            sh:targetClass tern:MaterialSample
+        ] ,
+        [
+            a sh:NodeShape ;
+            sh:closed true ;
+            sh:property
+                [
+                    sh:group prez:MainProperties ;
+                    sh:order 0.1 ;
+                    sh:path dcterms:title
+                ] ,
+                [
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.2 ;
+                    sh:path geo:hasGeometry
+                ] ,
+                [
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.3 ;
+                    sh:path geo:asGeoJSON
+                ] ,
+                [
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.4 ;
+                    sh:path geo:asWKT
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 1 ;
+                    sh:path gas:hasCountry
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 2 ;
+                    sh:path gas:hasState
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 3 ;
+                    sh:path gas:isOnshoreOffshore
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 4 ;
+                    sh:path gas:hasSurveyType
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 5 ;
+                    sh:path gas:hasSurveyDetail
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 6 ;
+                    sh:path gas:hasMeasurementType
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 7 ;
+                    sh:path gas:hasMinLineSpacing
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 8 ;
+                    sh:path gas:hasMaxLineSpacing
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 9 ;
+                    sh:path gas:hasTieSpacing
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 10 ;
+                    sh:path gas:hasLineLength
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 11 ;
+                    sh:path gas:hasTieLength
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 12 ;
+                    sh:path gas:hasTotalLength
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 13 ;
+                    sh:path gas:hasLineAzimuth
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 14 ;
+                    sh:path gas:hasTieAzimuth
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 15 ;
+                    sh:path gas:hasOwner
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 16 ;
+                    sh:path gas:hasOperator
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 17 ;
+                    sh:path gas:hasContractor
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 18 ;
+                    sh:path gas:hasProcessor
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 19 ;
+                    sh:path gas:hasPlatformType
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 20 ;
+                    sh:path gas:hasPlatformName
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 21 ;
+                    sh:path prov:startedAtTime
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 22 ;
+                    sh:path prov:endedAtTime
+                ] ;
+            sh:targetClass gas:Survey
+        ] ,
+        [
+            a sh:NodeShape ;
+            sh:closed true ;
+            sh:property
+                [
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.2 ;
+                    sh:path geo:hasGeometry
+                ] ,
+                [
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.3 ;
+                    sh:path geo:asGeoJSON
+                ] ,
+                [
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.4 ;
+                    sh:path geo:asWKT
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 1 ;
+                    sh:path gas:hasPurpose
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 2 ;
+                    sh:path gas:hasProject
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 3 ;
+                    sh:path gas:hasLocationDescription
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 4 ;
+                    sh:path gas:hasElevation
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 5 ;
+                    sh:path gas:hasRegionName
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 6 ;
+                    sh:path gas:hasOriginator
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 7 ;
+                    sh:path gas:hasObservationDate
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 8 ;
+                    sh:path gas:hasRemark
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 9 ;
+                    sh:path gas:hasEarthMaterials
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 10 ;
+                    sh:path gas:hasStratigraphy
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 11 ;
+                    sh:path gas:hasStructuralMeasurement
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 12 ;
+                    sh:path gas:hasInorganicChemistry
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 13 ;
+                    sh:path gas:hasOrganicGeochemistry
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 14 ;
+                    sh:path gas:hasSHRIMPGeochronology
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 15 ;
+                    sh:path gas:hasIsotopes
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 16 ;
+                    sh:path gas:hasGroundwaterHydrochemistry
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 17 ;
+                    sh:path gas:hasRockProperties
+                ] ;
+            sh:targetClass gas:Fieldsite
+        ] ,
+        [
+            a sh:NodeShape ;
+            sh:closed true ;
+            sh:property
+                [
+                    sh:group prez:MainProperties ;
+                    sh:order 0.1 ;
+                    sh:path dcterms:title
+                ] ,
+                [
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.2 ;
+                    sh:path geo:hasGeometry
+                ] ,
+                [
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.3 ;
+                    sh:path geo:asGeoJSON
+                ] ,
+                [
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.4 ;
+                    sh:path geo:asWKT
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 1 ;
+                    sh:path gas:hasOperatingStatus
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 2 ;
+                    sh:path gas:hasLocationDescription
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 3 ;
+                    sh:path skos:altLabel
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 4 ;
+                    sh:path gas:hasCommodities
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 5 ;
+                    sh:path gas:hasAssociatedCompanies
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 6 ;
+                    sh:path gas:hasProductionResults
+                ] ;
+            sh:targetClass gas:Mine
+        ] ,
+        [
+            a sh:NodeShape ;
+            sh:closed true ;
+            sh:property
+                [
+                    sh:group prez:MainProperties ;
+                    sh:order 0.1 ;
+                    sh:path dcterms:title
+                ] ,
+                [
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.2 ;
+                    sh:path geo:hasGeometry
+                ] ,
+                [
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.3 ;
+                    sh:path geo:asGeoJSON
+                ] ,
+                [
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.4 ;
+                    sh:path geo:asWKT
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 1 ;
+                    sh:path gas:hasOccurenceType
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 2 ;
+                    sh:path gas:hasLocationDescription
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 3 ;
+                    sh:path skos:altLabel
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 4 ;
+                    sh:path gas:hasCommodities
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 5 ;
+                    sh:path gas:hasAssociatedCompanies
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 6 ;
+                    sh:path gas:hasProvinces
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 7 ;
+                    sh:path gas:hasMaxAgeName
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 8 ;
+                    sh:path gas:hasMinAgeName
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 9 ;
+                    sh:path gas:hasResources
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 10 ;
+                    sh:path gas:hasSamples
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 11 ;
+                    sh:path gas:hasStratigraphy
+                ] ;
+            sh:targetClass gas:MineralOccurence
+        ] ,
+        [
+            a sh:NodeShape ;
+            sh:closed true ;
+            sh:property
+                [
+                    dash:hidden "true" ;
+                    sh:group prez:MainProperties ;
+                    sh:order 0.01 ;
+                    sh:path dcterms:title
+                ] ,
+                [
+                    dash:hidden "true" ;
+                    sh:group prez:MainProperties ;
+                    sh:order 0.02 ;
+                    sh:path rdfs:label
+                ] ,
+                [
+                    dash:hidden "true" ;
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.03 ;
+                    sh:path geo:hasGeometry
+                ] ,
+                [
+                    dash:hidden "true" ;
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.04 ;
+                    sh:path geo:asGeoJSON
+                ] ,
+                [
+                    dash:hidden "true" ;
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.05 ;
+                    sh:path geo:asWKT
+                ] ,
+                [
+                    dash:hidden "true" ;
+                    sh:group prez:OtherProperties ;
+                    sh:order 0.06 ;
+                    sh:path dcterms:identifier
+                ] ,
+                [
+                    dash:hidden "true" ;
+                    sh:group prez:OtherProperties ;
+                    sh:order 0.07 ;
+                    sh:path rdf:type
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 1 ;
+                    sh:path gas:hasStationNo
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 2 ;
+                    sh:path gas:hasCity
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 3 ;
+                    sh:path gas:hasSite
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 4 ;
+                    sh:path gas:hasCondition
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 5 ;
+                    sh:path gas:hasDateLastVisited
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 5.1 ;
+                    sh:path gas:hasLongitude
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 5.2 ;
+                    sh:path gas:hasLatitude
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 6 ;
+                    sh:path gas:hasGeodeticDatum
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 7 ;
+                    sh:path gas:hasGravityValue
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 8 ;
+                    sh:path gas:hasGravityUOM
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 9 ;
+                    sh:path gas:hasGravityDatum
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 10 ;
+                    sh:path gas:hasStationType
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 11 ;
+                    sh:path gas:hasState
+                ] ;
+            sh:targetClass gas:GravityStation
+        ] ,
+        [
+            a sh:NodeShape ;
+            sh:closed true ;
+            sh:property
+                [
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.3 ;
+                    sh:path geo:asGeoJSON
+                ] ,
+                [
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.4 ;
+                    sh:path geo:asWKT
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 1 ;
+                    sh:path skos:altLabel
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 2 ;
+                    sh:path gas:hasMeasuredSectionType
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 3 ;
+                    sh:path gas:hasPurpose
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 4 ;
+                    sh:path gas:hasProject
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 5 ;
+                    sh:path gas:hasElevation
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 6 ;
+                    sh:path gas:hasCountry
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 7 ;
+                    sh:path gas:hasState
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 8 ;
+                    sh:path gas:hasLocationDescription
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 9 ;
+                    sh:path gas:hasMeasuredSectionLength
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 10 ;
+                    sh:path gas:hasOriginator
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 11 ;
+                    sh:path gas:hasRemark
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 11.1 ;
+                    sh:path gas:hasEarthMaterials
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 11.1 ;
+                    sh:path gas:hasStratigraphy
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 12 ;
+                    sh:path gas:hasInorganicChemistry
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 13 ;
+                    sh:path gas:hasOrganicGeochemistry
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 14 ;
+                    sh:path gas:hasSHRIMPGeochronology
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 15 ;
+                    sh:path gas:hasIsotopes
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 16 ;
+                    sh:path gas:hasGroundwaterHydrochemistry
+                ] ,
+                [
+                    sh:group prez:OtherProperties ;
+                    sh:order 17 ;
+                    sh:path gas:hasRockProperties
+                ] ,
+                [
+                    sh:group prez:MainProperties ;
+                    sh:order 0.1 ;
+                    sh:path dcterms:title
+                ] ,
+                [
+                    sh:group prez:GeometryProperties ;
+                    sh:order 0.2 ;
+                    sh:path geo:hasGeometry
+                ] ;
+            sh:targetClass gas:MeasuredSection
         ] ;
-  .
-
-<https://w3id.org/profile/ga-spaceprez/spec>
-    dcterms:title "Specification Document"@en ;
-    dcterms:description "The normative, human-readable, listing of profile requirements"@en ;
-    dcterms:conformsTo <https://www.w3.org/TR/html52/> ;
-    dcterms:format "text/html" ;
-    prof:hasArtifact "https://w3id.org/profile/ga-spaceprez/spec"^^xsd:anyURI ;
-    prof:hasRole role:specification
-.
-
-<https://w3id.org/profile/ga-spaceprez/validator>
-    dcterms:title "Validator in SHACL"@en ;
-    dcterms:description "A SHACL Shapes file to be used to test the conformance of RDF data to this profile"@en ;
-    dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
-    dcterms:format "text/turtle" ;
-    prof:hasArtifact "https://w3id.org/profile/ga-spaceprez/validator"^^xsd:anyURI ;
-    prof:hasRole role:validation
-.
-
-<https://w3id.org/profile/ga-spaceprez/compounded-validator>
-    dcterms:title "GA SpacePrez Compound Validator"@en ;
-    dcterms:description "Compounded SHACL validator for the GA SpacePrez Profile. This validator contains GeoSPARQL, OGC LD API Profile, Geoscience Australia, and SpacePrez Profile validators all in one"@en ;
-    dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
-    dcterms:format "text/turtle" ;
-    prof:hasArtifact "https://w3id.org/profile/ga-spaceprez/compounded-validator"^^xsd:anyURI ;
-    prof:hasRole role:validation
+    altr-ext:hasResourceFormat
+        "application/ld+json" ,
+        "application/rdf+xml" ,
+        "text/html" ,
+        "text/turtle" ;
+    prof:hasResource
+        <https://w3id.org/profile/ga-spaceprez/compounded-validator> ,
+        <https://w3id.org/profile/ga-spaceprez/repo> ,
+        <https://w3id.org/profile/ga-spaceprez/spec> ,
+        <https://w3id.org/profile/ga-spaceprez/validator> ;
+    prof:isProfileOf <https://w3id.org/profile/spaceprez> ;
 .
 
 <https://w3id.org/profile/ga-spaceprez/examples>
-    dcterms:title "Example data files"@en ;
     dcterms:description "Example data files"@en ;
+    dcterms:title "Example data files"@en ;
     prof:hasArtifact "https://w3id.org/profile/ga-spaceprez/examples"^^xsd:anyURI ;
-    prof:hasRole role:example
+    prof:hasRole role:example ;
+.
+
+<https://w3id.org/profile/ga-spaceprez/compounded-validator>
+    dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
+    dcterms:description "Compounded SHACL validator for the GA SpacePrez Profile. This validator contains GeoSPARQL, OGC LD API Profile, Geoscience Australia, and SpacePrez Profile validators all in one"@en ;
+    dcterms:format "text/turtle" ;
+    dcterms:title "GA SpacePrez Compound Validator"@en ;
+    prof:hasArtifact "https://w3id.org/profile/ga-spaceprez/compounded-validator"^^xsd:anyURI ;
+    prof:hasRole role:validation ;
 .
 
 <https://w3id.org/profile/ga-spaceprez/repo>
-    dcterms:title "Profile code repository"@en ;
     dcterms:description "Code repository storing all Profile artifacts"@en ;
+    dcterms:title "Profile code repository"@en ;
     prof:hasArtifact "https://w3id.org/profile/ga-spaceprez/repo"^^xsd:anyURI ;
-    prof:hasRole role:repository
+    prof:hasRole role:repository ;
 .
 
-<https://linked.data.gov.au/org/surround> a sdo:Organization ;
+<https://w3id.org/profile/ga-spaceprez/spec>
+    dcterms:conformsTo <https://www.w3.org/TR/html52/> ;
+    dcterms:description "The normative, human-readable, listing of profile requirements"@en ;
+    dcterms:format "text/html" ;
+    dcterms:title "Specification Document"@en ;
+    prof:hasArtifact "https://w3id.org/profile/ga-spaceprez/spec"^^xsd:anyURI ;
+    prof:hasRole role:specification ;
+.
+
+<https://w3id.org/profile/ga-spaceprez/validator>
+    dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
+    dcterms:description "A SHACL Shapes file to be used to test the conformance of RDF data to this profile"@en ;
+    dcterms:format "text/turtle" ;
+    dcterms:title "Validator in SHACL"@en ;
+    prof:hasArtifact "https://w3id.org/profile/ga-spaceprez/validator"^^xsd:anyURI ;
+    prof:hasRole role:validation ;
+.
+
+<https://linked.data.gov.au/org/surround>
+    a sdo:Organization ;
     sdo:name "SURROUND Australia Pty Ltd" ;
     sdo:url "https://surroundaustralia.com"^^xsd:anyURI ;
 .
-
-org:geoscienceaustralia
-    rdfs:label "Geoscience Australia" ;
-    .
